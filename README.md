@@ -1,7 +1,34 @@
 # Laravel Practical APP
 
+You can register new account from this url.
+
+http://localhost:8000/
+
+```
+#### Run Migration
+php artisan migrate
+
+#### Add env value
+
+DB_CONNECTION=mysql
+DB_HOST=YOUR_DB_HOST
+DB_PORT=3306
+DB_DATABASE=YOUR_DB_NAME
+DB_USERNAME=YOUR_DB_USERNAME
+DB_PASSWORD=YOUR_DB_PASSWORD
+
+MAIL_MAILER=YOUR_MAILER //smpt
+MAIL_FROM_ADDRESS=YOUR_FROM_MAIL_ADDRESS
+MAIL_FROM_NAME="${APP_NAME}"
+MAIL_DRIVER=YOUR_MAIL_DRIVER //smpt
+MAIL_HOST=YOUR_MAIL_HOST //smtp.googlemail.com
+MAIL_PORT=465
+MAIL_USERNAME=YOUR_MAIL_USERNAME
+MAIL_PASSWORD=YOUR_MAIL_PASSWORD
+MAIL_ENCRYPTION=ssl
+
 #### Registration API  
-  
+
 ``` URL: api/register  
 METHOD:POST  
 Request Param:  
@@ -97,3 +124,7 @@ Response Data:
     "msg": "get_success",
     "status": 1
 }
+
+### Unit Test
+
+php artisan test
