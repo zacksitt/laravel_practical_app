@@ -1,7 +1,12 @@
 # Laravel Practical APP
 
+You can register new account from this url.
+
+http://localhost:8000/
+
+
 #### Registration API  
-  
+
 ``` URL: api/register  
 METHOD:POST  
 Request Param:  
@@ -97,3 +102,7 @@ Response Data:
     "msg": "get_success",
     "status": 1
 }
+
+### Unit Test
+
+php artisan test
