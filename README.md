@@ -1,58 +1,99 @@
-# Laravel Challenge
+# Laravel Practical APP
 
-#### 1. api/login
+#### Registration API  
+  
+``` URL: api/register  
+METHOD:POST  
+Request Param:  
+{  
+      "email":"YOUR_EMAIL",  
+      "name":"YOUR_NAME",  
+      "gender":"GENDER",  
+      "phone":"PHONE",  
+      "date_of_birth":"YOUR BIRTHDAY", //day/month/year  
+      "password":"PASSWORD"  
+}  
+  
+Response Data:  
+{  
+    "status": 1,  
+    "msg": "register_success"  
+}  
+  
+#### Login API   
+  
+URL: api/login  
+METHOD: POST  
+Request Param  
+{
+  "email":"EMAIL",
+  "password":"PASSWORD"
+}
 
-*Used at login.*
-<br>
-Do all the tasks below:
+Response Data:
+{
+    "status": 1,
+    "msg": "login_success",
+    "user": {
+        "id": 1,
+        "name": "xxxx",
+        "phone": "xxxx",
+        "email": "xxxxx",
+        "date_of_birth": "02/22/1989",
+        "gender": "xxx",
+        "created_at": "2023-05-04T09:38:35.000000Z",
+        "updated_at": "2023-05-04T09:38:35.000000Z"
+    },
+    "token": "1|wR0KMNU41GOqYbviSNUYNSAfaTXJhWlcBBRgjQiY"
+}
 
-- Rewrite the code for request validation
-- Refine the code for user credentials
-- Implement code with Resources
+#### User List API
 
-#### 2. api/posts
+URL: api/users
+METHOD: GET
+HEADER: {
+    "Accept":"application/json",
+    "Authorization":"Bearer TOKEN"
+}
 
-*Fetch posts listing.*
-<br>
-Do the following tasks:
+Response Data:
+{
+    "users": [
+        {
+           "id": 1,
+            "name": "xxxx",
+            "phone": "xxxx",
+            "email": "xxxxx",
+            "date_of_birth": "02/22/1989",
+            "gender": "xxx",
+            "joined_at": "2023-05-04T09:38:35.000000Z",
+        }
+    ],
+    "msg": "get_success",
+    "status": 1
+}
 
-- To optimize the query
-- to use Resource
-#### 3. api/posts/reaction
+#### User Detail API
 
-*Used for like or unlike a post after login.*
-<br>
-Do the following tasks:
+URL: api/user/ID
+METHOD:GET
+HEADER: {
+    "Accept":"application/json",
+    "Authorization":"Bearer TOKEN"
+}
 
-- Change the coding style for request validation
-- Refactor the code for Like (or) Unlike to get better result
-
-#### 4. Wifi Calculator
-1. api/mpt/invoice-amount
-2. api/ooredoo/invoice-amount
-
-*Wifi Monthly Payment Calculator*
-<br>
-Do the following tasks:
-- Implement code for wifi calculator following the rules for SOLID design principle
-
-#### 5. HR
-- api/apply-job
-- api/staff/salary
-
-*API for apply jobs*
-<br>
-Do the following tasks:
-
-- Fix the wrong usage code
-
-### Bonus
-#### Test Cases
-- Write feature tests for a login API.
-- Write unit tests for MPT Service and Ooredoo Service.
-
-### ** Notes **
-
-- This project is not for business flows. You don't need to consider for that
-- This project is intended for **Coding Skill** only.
-- You can improve your code as much as you can, we will consider as bonus points.
+Response Data:
+{
+    "user":{
+            "id": 1,
+            "name": "xxxx",
+            "phone": "xxxx",
+            "email": "xxxxx",
+            "date_of_birth": "02/22/1989",
+            "gender": "xxx",
+            "created_at": "2023-05-04T09:38:35.000000Z",
+            "updated_at": "2023-05-04T09:38:35.000000Z",
+    },
+    "msg": "get_success",
+    "status": 1
+}
