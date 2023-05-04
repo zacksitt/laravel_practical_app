@@ -13,6 +13,13 @@ class AuthController extends Controller
     public function create(Request $req){
 
         try{
+            
+            $req->validate([
+                'name'      => 'required|string',
+                'email'     => 'required|string|unique:users,email',
+                'phone'     => 'string|unique:users,phone',
+                'password'  => 'required|string'
+            ]);
 
             $response = $this->registerUser($req);
 
@@ -23,7 +30,6 @@ class AuthController extends Controller
                 return view("register.register-fail",["message" => $response["err"]]);
             }
         } catch (\Exception $e) {
-            dd($e);
             return view("register.register-fail",["message" => $e->getMessage()]);
         }
     }
