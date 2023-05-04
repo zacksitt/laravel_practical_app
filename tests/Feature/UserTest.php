@@ -13,7 +13,7 @@ class UserTest extends TestCase
      */
     public function test_register_returns_a_successful_response(): void
     {
-        $response = $this->call('POST','/api/register',[
+        $response = $this->call('POST','/api/v1/register',[
 
             "name"              => "Test",
             "password"          => "asdf1234",
@@ -35,13 +35,41 @@ class UserTest extends TestCase
     public function test_login_returns_a_successful_response(): void
     {
         $user = User::orderBy("id","DESC")->first();
-        $response = $this->call('POST','/api/login',[
+        $response = $this->call('POST','/api/v1/login',[
             "email"     => $user->email,
             "password" => "asdf1234"
         ])->json();
         $this->assertEquals(1,$response["status"]);
         $this->assertEquals("login_success",$response["msg"]);
 
+    }
+     /** 
+     * POST Users
+     * @test 
+     * 
+     */
+    public function test_users_list_return_a_successful_response(): void
+    {
+        $user       = User::first();
+        $response = $this->actingAs($user)
+                    ->get('/api/v1/users');
+        $this->assertEquals(1,$response["status"]);
+        $this->assertEquals("get_success",$response["msg"]);
+    }
+
+     /** 
+     * POST Users
+     * @test 
+     * 
+     */
+    public function test_user_return_a_successful_response(): void
+    {
+        $user       = User::first();
+        $response = $this->actingAs($user)
+                    ->get('/api/v1/user/' . $user->id);
+
+        $this->assertEquals(1,$response["status"]);
+        $this->assertEquals("get_success",$response["msg"]);
     }
 
     function generateRandomString(int $length = 10,bool $justNumber = false):string {
