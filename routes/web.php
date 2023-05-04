@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('register.register');
 });
 
 Route::get('/register', function () {
-    return view('register');
+    return view('register.register');
 });

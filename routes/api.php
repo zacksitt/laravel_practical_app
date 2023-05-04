@@ -1,10 +1,8 @@
 <?php
 
 use App\Http\Controllers\InternetServiceProviderController;
-use App\Http\Controllers\JobController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\StaffController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('register', [LoginController::class, 'register']);
-
-Route::post('login', [LoginController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+Route::post('create', [AuthController::class, 'create']);
+Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
-
-   
+    Route::get('users', [UserController::class, 'get']);
+    Route::get('user/{id}', [UserController::class, 'getDetail']);
 });
