@@ -1,30 +1,30 @@
 # Laravel Practical APP
 
-#### Registration API
-
-URL: api/register
-METHOD:POST
-Request Param:
-{
-    "email":"YOUR_EMAIL",
-    "name":"YOUR_NAME",
-    "gender":"GENDER",
-    "phone":"PHONE",
-    "date_of_birth":"YOUR BIRTHDAY", //day/month/year
-    "password":"PASSWORD"
-}
-
-Response Data:
-{
-    "status": 1,
-    "msg": "register_success"
-}
-
-#### Login API 
-
-URL: api/login
-METHOD: POST
-Request Param
+#### Registration API  
+  
+``` URL: api/register  
+METHOD:POST  
+Request Param:  
+{  
+      "email":"YOUR_EMAIL",  
+      "name":"YOUR_NAME",  
+      "gender":"GENDER",  
+      "phone":"PHONE",  
+      "date_of_birth":"YOUR BIRTHDAY", //day/month/year  
+      "password":"PASSWORD"  
+}  
+  
+Response Data:  
+{  
+    "status": 1,  
+    "msg": "register_success"  
+}  
+  
+#### Login API   
+  
+URL: api/login  
+METHOD: POST  
+Request Param  
 {
   "email":"EMAIL",
   "password":"PASSWORD"
