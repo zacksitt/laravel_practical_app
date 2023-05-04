@@ -25,8 +25,12 @@
                     <input type="type" class="form-control" name="phone" id="phone">
                 </div>
                 <div class="mb-3">
-                <label for="name" class="form-label">Date of Birth</label>
-                    <input type="date" class="form-control" name="name" id="name">
+                <label for="date_of_birth" class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" name="date_of_birth" id="date_of_birth">
+                </div>
+                <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                    <input type="text" class="form-control" name="gender" id="name">
                 </div>
                 <div class="mb-3">
                 <label for="email" class="form-label">Email</label>

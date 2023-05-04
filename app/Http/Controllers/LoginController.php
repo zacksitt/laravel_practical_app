@@ -5,14 +5,39 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Welcome;
 
 class LoginController extends Controller
 {
-    public function register(Request $request){
+    public function register(Request $req){
 
+        $req->validate([
+            'name'      => 'required|string',
+            'email'     => 'required|string|unique:users,email',
+            'password'  => 'required|string'
+        ]);
         
-        return view("welcome");
-        
+        try {
+            
+            $user = User::create([
+                "name"          => $req->name,
+                "phone"         => $req->phone,
+                "gender"        => $req->gender,
+                "date_of_birth" => $req->date_of_birth,
+                "email"         => $req->email,
+                "password"      => Hash::make($req->newPassword),
+                "created_at"    => \Carbon\Carbon::now(),
+                "updated_at"    => \Carbon\Carbon::now()
+            ]);
+
+            $welcomeMsg = "Welcome to service";
+            Mail::to($req->email)->send(new Welcome($req->email,$welcomeMsg));
+
+        } catch (\Exception $e) {
+            return view("register-fail");
+        }
+        return view("register-success");
     }
 
     public function login(Request $request)
